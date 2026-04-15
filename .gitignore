@@ -1,0 +1,18 @@
+# 系统镜像（体积大、本机生成）
+CoreAlgo_sysimage.dll
+CoreAlgo_sysimage.so
+CoreAlgo_sysimage.dylib
+
+# Julia
+*.ji
+*.ji.*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
