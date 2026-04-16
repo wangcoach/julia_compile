@@ -1,0 +1,24 @@
+services:
+  julia-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        JULIA_VERSION: "1.11.6"
+        # 构建时可选：docker compose build --build-arg OBF_KEY=密钥
+        OBF_KEY: ${OBF_KEY:-}
+    image: julia-corealgo-service:latest
+    container_name: julia-corealgo-service
+    restart: unless-stopped
+    ports:
+      - "9397:9397"
+    environment:
+      JULIA_NUM_THREADS: "10"
+      SERVER_HOST: "0.0.0.0"
+      SERVER_PORT: "9397"
+    healthcheck:
+      test: ["CMD", "julia", "-e", "using HTTP; exit(HTTP.get(\"http://127.0.0.1:9397/health\").status == 200 ? 0 : 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s

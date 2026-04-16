@@ -3,7 +3,7 @@ using HTTP
 using CoreAlgo
 
 @get "/health" function (req::HTTP.Request)
-    return "ok"
+    return Dict("status" => "ok", "threads" => Threads.nthreads())
 end
 
 @get "/compute/{job_id}" function (req::HTTP.Request, job_id::Int)
@@ -15,4 +15,9 @@ end
     )
 end
 
-serve(host = "127.0.0.1", port = 9397)
+const HOST = get(ENV, "SERVER_HOST", "0.0.0.0")
+const PORT = parse(Int, get(ENV, "SERVER_PORT", "9397"))
+
+@info "Starting server" host=HOST port=PORT threads=Threads.nthreads()
+
+serve(host = HOST, port = PORT, access_log = nothing)

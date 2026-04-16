@@ -1,0 +1,22 @@
+.git
+.gitignore
+.vscode
+.idea
+*.md
+!tools/README.md
+
+# 构建产物
+*.so
+*.dll
+*.dylib
+CoreAlgoSys.*
+
+# Python 相关
+__pycache__
+*.pyc
+parallel_client.py
+
+# Docker 自身
+Dockerfile
+docker-compose.yml
+.dockerignore
