@@ -1,13 +1,18 @@
 using Oxygen
 using HTTP
 using CoreAlgo
+using CoreAlgo2
 
 @get "/health" function (req::HTTP.Request)
     return "ok"
 end
 
 @get "/compute/{job_id}" function (req::HTTP.Request, job_id::Int)
-    nt = CoreAlgo.main(job_id)
+    nt = if job_id > 100
+        CoreAlgo2.main(job_id)
+    else
+        CoreAlgo.main(job_id)
+    end
     return Dict(
         "job_id" => nt.job_id,
         "result" => nt.result,

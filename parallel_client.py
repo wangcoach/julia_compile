@@ -2,7 +2,7 @@
 客户端并发压测（unittest）。
 
 服务端需已启动，例如（julia_test 目录）：
-  julia -t 4 -J ".\\CoreAlgo\\compiled\\CoreAlgo_sysimage.dll" --project=".\\CoreAlgo" ".\\server.jl"
+  julia -t 4 -J ".\\compiled\\server_sysimage.dll" --project=. ".\\server.jl"
 
 运行（需 requests）：
   pip install requests
@@ -41,7 +41,7 @@ class TestParallelComputeBenchmark(unittest.TestCase):
             r.raise_for_status()
         except requests.RequestException as e:
             raise unittest.SkipTest(
-                "无法连接服务，请先启动: julia --project=CoreAlgo server.jl"
+                "无法连接服务，请先启动: julia --project=. server.jl（若已编译 sysimage 则加 -J compiled\\\\server_sysimage.dll）"
             ) from e
 
     def test_client_threads_1_to_8_time_100_requests(self) -> None:

@@ -1,8 +1,10 @@
 # PackageCompiler 产物（体积大，本地用 build_sysimage.jl 生成）
 CoreAlgo/compiled/
+compiled/
 
 # 运行期生成的 CSV
 CoreAlgo/results.csv
+CoreAlgo2/results.csv
 
 # Python
 __pycache__/

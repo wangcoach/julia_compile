@@ -1,0 +1,14 @@
+[deps]
+CoreAlgo = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+CoreAlgo2 = "a1b2c3d4-e5f6-7890-abcd-ef1234567891"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Oxygen = "df9a0d86-3283-4920-82dc-4555fc0d1d8b"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+
+[sources]
+CoreAlgo = {path = "CoreAlgo"}
+CoreAlgo2 = {path = "CoreAlgo2"}
+
+[compat]
+HTTP = "1.11.0"
+Oxygen = "1.10.1"
